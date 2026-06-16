@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Root font size drives the whole rem-based type scale. Bumped up for a
+       more generous, readable luxury feel. Tune these two values to scale all
+       typography site-wide. */
+    font-size: 106.25%; /* 17px base on small screens */
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 112.5%; /* 18px base on tablet and up */
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-bone font-sans text-ink antialiased;
+  }
+
+  /* Refined default focus ring for keyboard users. */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brass;
+  }
+
+  /* Skip link, visible only on focus. */
+  .skip-link {
+    @apply sr-only;
+  }
+  .skip-link:focus {
+    @apply not-sr-only fixed left-4 top-4 z-[100] bg-ink px-4 py-2 text-bone;
+  }
+}
